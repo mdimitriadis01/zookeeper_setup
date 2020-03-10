@@ -10,6 +10,6 @@
     password: '{{ zookeeper_password }}'
     groups: zookeeper
     append: yes
-    shell: /bin/bash
+    shell: /sbin/nologin
     state: present
 

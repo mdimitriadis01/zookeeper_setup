@@ -1,2 +1,36 @@
----
+-
 # tasks file for zookeeper
+- name: Download zookeeper-sources
+  git:
+    repo: https://github.com/apache/zookeeper.git
+    version: release-3.6.0
+    clone: yes
+    depth: 1
+    dest: /opt/zookeeper
+
+- name: Compile zookeeper
+  shell: |
+    cd /opt/zookeeper
+    mkdir data
+    mvn clean install -DskipTests
+    chown -R zookeeper:zookeeper /opt/zookeeper
+
+- name: Add config file    
+  copy:
+    src: zoo.cfg
+    dest: /opt/zookeeper/conf
+    owner: zookeeper
+    group: zookeeper
+
+- name: Add config file for service
+  copy:
+    src: zookeeper.service
+    dest: /usr/lib/systemd/system/zookeeper.service
+
+- name: Enable service for zookeeper
+  systemd:
+    name: zookeeper
+    daemon_reload: yes
+    enabled: yes
+    state: started
+
