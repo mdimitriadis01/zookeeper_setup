@@ -1,0 +1,15 @@
+---
+# tasks file for users
+- name: Create group for zookeeper user
+  group:
+    name: zookeeper
+    state: present
+- name: Create zookeeper user
+  user:
+    name: zookeeper
+    password: '{{ zookeeper_password }}'
+    groups: zookeeper
+    append: yes
+    shell: /bin/bash
+    state: present
+
