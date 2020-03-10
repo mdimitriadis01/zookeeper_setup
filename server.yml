@@ -6,5 +6,6 @@
   become_user: root
   roles:
     - users
+    - packages
     - zookeeper
 

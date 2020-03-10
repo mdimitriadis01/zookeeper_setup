@@ -1,0 +1,18 @@
+---
+# tasks file for packages
+- name: Install java8
+  yum:
+    name: java-1.8.0-openjdk
+    state: installed
+    update_cache: true
+- name: Install wget
+  yum:
+    name: wget
+    state: installed
+    update_cache: true
+- name: Install maven
+  yum:
+    name: maven
+    state: installed
+    update_cache: true
+
