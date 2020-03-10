@@ -1,0 +1,9 @@
+---
+# setup zookeeper on a centos host
+- hosts: remote
+  user: centos
+  become: yes
+  become_user: root
+  roles:
+    - zookeeper
+
