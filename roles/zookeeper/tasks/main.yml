@@ -6,19 +6,19 @@
     version: release-3.6.0
     clone: yes
     depth: 1
-    dest: /opt/zookeeper
+    dest: '{{ zookeeper_directory }}'
 
 - name: Compile zookeeper
   shell: |
-    cd /opt/zookeeper
+    cd '{{ zookeeper_directory }}'
     mkdir data
     mvn clean install -DskipTests
-    chown -R zookeeper:zookeeper /opt/zookeeper
+    chown -R zookeeper:zookeeper '{{ zookeeper_directory }}'
 
 - name: Add config file    
   copy:
     src: zoo.cfg
-    dest: /opt/zookeeper/conf
+    dest: '{{ zookeeper_directory }}/conf'
     owner: zookeeper
     group: zookeeper
 

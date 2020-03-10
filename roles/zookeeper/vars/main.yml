@@ -1,2 +1,4 @@
 ---
 # vars file for zookeeper
+zookeeper_directory: /opt/zookeeper
+zookeeper_adminserver_port: 8081
