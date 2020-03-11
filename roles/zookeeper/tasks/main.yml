@@ -15,12 +15,8 @@
     mvn clean install -DskipTests
     chown -R zookeeper:zookeeper '{{ zookeeper_directory }}'
 
-- name: Add config file    
-  copy:
-    src: zoo.cfg
-    dest: '{{ zookeeper_directory }}/conf'
-    owner: zookeeper
-    group: zookeeper
+- name: Add config file
+  template: src=zoo.cfg dest='{{ zookeeper_directory }}/conf'
 
 - name: Add config file for service
   copy:
